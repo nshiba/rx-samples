@@ -35,5 +35,21 @@ public class Create {
 
 また、エラーの場合には `onError` を呼びます。
 
-##
+## Defer
+`defer` は実行させる `Observable` を `subscribe` したときに作成するオペレーターです。
 
+通常の `create` はその場で実行する `Observable` を作成しますが、 `defer` は `Observable` の作成自体を遅延させます。
+
+```Java
+public class Defer {
+    public static void main(String[] args) {
+        Observable observable = Observable.defer(() -> observer -> {
+            observer.onNext("test");
+            observer.onComplete();
+        });
+
+        // この瞬間にdeferの中で新しく Observable を作成することができる
+        observable.subscribe(System.out::println);
+    }
+}
+```
