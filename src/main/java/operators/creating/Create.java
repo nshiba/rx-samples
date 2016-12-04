@@ -1,10 +1,6 @@
 package operators.creating;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 
 public class Create {
     public static void main(String[] args) {
