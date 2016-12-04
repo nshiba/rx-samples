@@ -9,6 +9,4 @@
 - [RxJava](https://github.com/ReactiveX/RxJava)
 
 # Operators
-||
-|---|
-|[Creating](./src/main/java/operators/)|
+- [Creating](./src/main/java/operators/creating)
