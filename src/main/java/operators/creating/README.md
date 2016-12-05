@@ -29,7 +29,11 @@ public class Create {
 }
 ```
 
-出力は `nshiba:100` です。
+出力
+
+```
+nshiba:100
+```
 
 `onNext` で値を渡してあげて、終了時に `onComplete` を呼ぶ感じです。
 
@@ -53,3 +57,19 @@ public class Defer {
     }
 }
 ```
+
+## Empty/Never/Throw
+これらのOperatorたちは限られた用途で主にテスト用として使われると思います。
+
+### Empty
+何も値はないが正常に終了する `Observable` をつくります。
+つまり `onComplete` しか呼ばれません。
+
+### Never
+何も値がなく、終了もしない `Observable` をつくります。
+
+### Throw
+何も値はないが、指定したエラーをはいて終了する `Observable` をつくります。
+
+## From
+様々なオブジェクトの配列をObservableに変換します。
