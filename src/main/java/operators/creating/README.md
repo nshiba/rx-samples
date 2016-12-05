@@ -215,3 +215,19 @@ java:RxJava
 ```
 
 ## Timer
+指定した時間分の遅延後に値が出力する `Observable` を作成します。
+
+```
+System.out.println(System.currentTimeMillis());
+Observable.timer(3, TimeUnit.SECONDS)
+        .subscribe(aLong -> {
+            System.out.println(System.currentTimeMillis());
+        });
+```
+
+出力
+
+```
+1480975677330
+1480975680651
+```
