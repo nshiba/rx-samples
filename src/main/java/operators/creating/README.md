@@ -72,4 +72,32 @@ public class Defer {
 何も値はないが、指定したエラーをはいて終了する `Observable` をつくります。
 
 ## From
-様々なオブジェクトの配列をObservableに変換します。
+様々なオブジェクトをObservableに変換します。
+おそらくリストを変換することが多いと思うのでサンプルは `fromArray` で作ってみました。
+
+```
+public class From {
+    public static void main(String[] args) {
+        int[] nums = new int[] {1, 2, 3, 4, 5};
+        Observable.fromArray(nums).subscribe(ints -> {
+                    System.out.println("onNext");
+                    System.out.println(Arrays.toString(ints));
+                },
+                throwable -> {
+                    System.out.println("onError");
+                },
+                () -> {
+                    System.out.println("onComplete");
+                });
+    }
+}
+```
+
+出力
+```
+onNext
+[1, 2, 3, 4, 5]
+onComplete
+```
+
+
