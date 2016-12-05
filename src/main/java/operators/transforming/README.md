@@ -16,3 +16,22 @@ Observable.range(1, 5)
 ```
 
 ## FlatMap
+ストリームに流れてきたものを処理してから、新しい `Observable` に合成します。
+後述の `Map` との違いは、 `FlatMap` は `Observable` を返して、 `Map` は値そのものを返します。
+
+```
+Observable.just("Hello.")
+        .flatMap(s -> Observable.just(s + "RxJava."))
+        .subscribe(System.out::println);
+```
+
+出力
+
+```
+Hello.RxJava.
+```
+
+## GroupBy
+
+```
+```
