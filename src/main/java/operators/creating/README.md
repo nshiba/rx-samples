@@ -135,3 +135,33 @@ onNext: 4
 onNext: test
 onComplete
 ```
+
+## Range
+指定した範囲の整数を出力する `Observable` を生成します。
+
+```
+Observable.range(0, 10)
+        .subscribe(i -> {
+            System.out.println("onNext: " + i);
+        }, throwable -> {
+            System.out.println("onError");
+        }, () -> {
+            System.out.println("onComplete");
+        });
+```
+
+出力
+
+```
+onNext: 0
+onNext: 1
+onNext: 2
+onNext: 3
+onNext: 4
+onNext: 5
+onNext: 6
+onNext: 7
+onNext: 8
+onNext: 9
+onComplete
+```
