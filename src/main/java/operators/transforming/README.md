@@ -20,15 +20,15 @@ Observable.range(1, 5)
 後述の `Map` との違いは、 `FlatMap` は `Observable` を返して、 `Map` は値そのものを返します。
 
 ```
-Observable.just("Hello.")
-        .flatMap(s -> Observable.just(s + "RxJava."))
-        .subscribe(System.out::println);
+Observable.just(1, 2, 3)
+        .flatMap(i -> Observable.range(i, i * 2))
+        .subscribe(System.out::print);
 ```
 
 出力
 
 ```
-Hello.RxJava.
+122345345678
 ```
 
 ## GroupBy
@@ -49,4 +49,22 @@ Observable.range(1, 10)
 [3, 6, 9]
 [1, 4, 7, 10]
 [2, 5, 8]
+```
+
+## Map
+ストリームに流れてきた値を変化させることができます。
+前述の `FlatMap` との違いは、 `FlatMap` は `Observable` を返して、 `Map` は値そのものを返します。
+
+```
+Observable.just(1,2,3)
+        .map(i -> i * 10)
+        .subscribe(System.out::println);
+```
+
+出力
+
+```
+10
+20
+30
 ```
