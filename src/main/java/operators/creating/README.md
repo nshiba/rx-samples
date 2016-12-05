@@ -110,4 +110,28 @@ Observable
 01234567789...
 ```
 
-##
+## Just
+直接引数に渡したオブジェクトで `Observable` を生成します。
+また、複数渡した場合はその分 `onNext` が呼ばれ、複数渡す場合は型が統一されてなくてもエラーになりません。
+
+```
+Observable.just(3, 1, 5, 4, "test")
+        .subscribe(num -> {
+            System.out.println("onNext: " + num);
+        }, throwable -> {
+            System.out.println("onError");
+        }, () -> {
+            System.out.println("onComplete");
+        });
+```
+
+出力
+
+```
+onNext: 3
+onNext: 1
+onNext: 5
+onNext: 4
+onNext: test
+onComplete
+```
