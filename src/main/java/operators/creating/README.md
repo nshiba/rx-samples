@@ -165,3 +165,34 @@ onNext: 8
 onNext: 9
 onComplete
 ```
+
+## Repeat
+指定回数繰り返す `Observable` を生成します。
+
+```
+Observable.just(1, 2, 3, 4, 5)
+        .repeat(3)
+        .subscribe(i -> {
+            System.out.println("onNext: " + i);
+        }, throwable -> {
+            System.out.println("onError");
+        }, () -> {
+            System.out.println("onComplete");
+        });
+```
+
+出力
+
+```
+onNext: 1
+onNext: 2
+onNext: 3
+onNext: 1
+onNext: 2
+onNext: 3
+onNext: 1
+onNext: 2
+onNext: 3
+onComplete
+```
+
