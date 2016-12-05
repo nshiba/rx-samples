@@ -45,17 +45,13 @@ nshiba:100
 通常の `create` はその場で実行する `Observable` を作成しますが、 `defer` は `Observable` の作成自体を遅延させます。
 
 ```Java
-public class Defer {
-    public static void main(String[] args) {
-        Observable observable = Observable.defer(() -> observer -> {
-            observer.onNext("test");
-            observer.onComplete();
-        });
+Observable observable = Observable.defer(() -> observer -> {
+    observer.onNext("test");
+    observer.onComplete();
+});
 
-        // この瞬間にdeferの中で新しく Observable を作成することができる
-        observable.subscribe(System.out::println);
-    }
-}
+// この瞬間にdeferの中で新しく Observable を作成することができる
+observable.subscribe(System.out::println);
 ```
 
 ## Empty/Never/Throw
@@ -76,21 +72,19 @@ public class Defer {
 おそらくリストを変換することが多いと思うのでサンプルは `fromArray` で作ってみました。
 
 ```
-public class From {
-    public static void main(String[] args) {
-        int[] nums = new int[] {1, 2, 3, 4, 5};
-        Observable.fromArray(nums).subscribe(ints -> {
-                    System.out.println("onNext");
-                    System.out.println(Arrays.toString(ints));
-                },
-                throwable -> {
-                    System.out.println("onError");
-                },
-                () -> {
-                    System.out.println("onComplete");
-                });
-    }
-}
+int[] nums = new int[] {1, 2, 3, 4, 5};
+Observable
+        .fromArray(nums)
+        .subscribe(ints -> {
+            System.out.println("onNext");
+            System.out.println(Arrays.toString(ints));
+        },
+        throwable -> {
+            System.out.println("onError");
+        },
+        () -> {
+            System.out.println("onComplete");
+        });
 ```
 
 出力
@@ -100,4 +94,20 @@ onNext
 onComplete
 ```
 
+## Interval
+指定した一定間隔で整数の値を出力する `Observable` を生成します。
+最初にどれくらい遅延させるかの指定も可能です。
 
+```
+Observable
+        .interval(1, TimeUnit.SECONDS)
+        .subscribe(System.out::print);
+```
+
+出力
+
+```
+01234567789...
+```
+
+##
