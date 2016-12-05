@@ -196,3 +196,22 @@ onNext: 3
 onComplete
 ```
 
+## Start
+なんか計算した値などを返せるメソッドの戻り値を出力する `Observable` を作成します。
+`Create` にちょっと似てる部分はありますが、こちらは戻り値が任意の値であって、 `onNext` , `onComplete` は呼ばないものです。
+
+```
+Observable.fromCallable(() -> {
+    String str = "java";
+    str += ":" + "RxJava";
+    return str;
+}).subscribe(System.out::println);
+```
+
+出力
+
+```
+java:RxJava
+```
+
+## Timer
