@@ -17,7 +17,6 @@ Observable.range(1, 5)
 
 ## FlatMap
 ストリームに流れてきたものを処理してから、新しい `Observable` に合成するオペレーター。
-後述の `Map` との違いは、 `FlatMap` は `Observable` を返して、 `Map` は値そのものを返します。
 
 ```
 Observable.just(1, 2, 3)
@@ -88,4 +87,23 @@ Observable.range(1, 5)
 6
 10
 15
+```
+
+## Window
+指定した間隔でストリームを分割して、分割したストリームで新たな `Observable` を作成するオペレーター。
+前述の `Buffer` と似ているが、 `Buffer` は `List<Integer>` を出力するのに対し、 `Window` は `Observable<Integer>` を出力する。
+
+```
+Observable.range(1,5)
+        .window(3)
+        .subscribe(integerObservable -> {
+            integerObservable.toList().subscribe(System.out::println);
+        });
+```
+
+出力
+
+```
+[1, 2, 3]
+[4, 5]
 ```
