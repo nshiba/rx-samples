@@ -10,3 +10,4 @@
 
 # Operators
 - [Creating](./src/main/java/operators/creating)
+- [Transforming](https://github.com/nshiba/rx-samples/tree/master/src/main/java/operators/transforming)
